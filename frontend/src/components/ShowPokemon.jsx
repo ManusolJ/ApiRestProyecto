@@ -14,7 +14,7 @@ useEffect(() => {
 
 const getAllPokemon = async () => {
     const response = await axios.get(`${endpoint}/pokemon`)
-    setPokemon(response.data) /* Revisar si es Pokemon con mayusc */
+    setPokemon(response.data)
 }
 
 
@@ -49,7 +49,7 @@ return (
                         <td>{pokemon.habilidad}</td>
                     
                         <td>
-                            <Link to={'/edit/${pokemon.id}'} className='btn btn-info'>Edit</Link>
+                            <Link to={`/edit/${pokemon.id}`} className='btn btn-info'>Edit</Link>
                             <button onClick={() => deletePokemon(pokemon.id)} className='btn btn-danger'>Delete</button>
                         </td>
                     </tr>
