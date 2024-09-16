@@ -13,36 +13,27 @@ const EditPokemon = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     
-    // Función para manejar la actualización
     const update = async (e) => {
         e.preventDefault();
-        try {
-            await axios.put(`${endpoint}${id}`, {
-                nombre: nombre,
-                tipo: tipo,
-                peso: peso,
-                altura: altura,
-                habilidad: habilidad
-            });
-            // Redirigir a la página principal de Pokémon después de actualizar
-            navigate('/');  // Cambia esta ruta si la lista de Pokémon está en otra ruta
-        } catch (error) {
-            console.error("Error updating Pokémon:", error);
-        }
+
+        await axios.put(`${endpoint}${id}`, {
+            nombre: nombre,
+            tipo: tipo,
+            peso: peso,
+            altura: altura,
+            habilidad: habilidad
+        });
+        navigate('/');
     };
 
     useEffect(() => {
         const getPokemonById = async () => {
-            try {
-                const response = await axios.get(`${endpoint}${id}`);
-                setNombre(response.data.nombre);
-                setTipo(response.data.tipo);
-                setPeso(response.data.peso);
-                setAltura(response.data.altura);
-                setHabilidad(response.data.habilidad);
-            } catch (error) {
-                console.error("Error fetching Pokémon data:", error);
-            }
+            const response = await axios.get(`${endpoint}${id}`);
+            setNombre(response.data.nombre);
+            setTipo(response.data.tipo);
+            setPeso(response.data.peso);
+            setAltura(response.data.altura);
+            setHabilidad(response.data.habilidad);
         };
         getPokemonById();
     }, [id]);
