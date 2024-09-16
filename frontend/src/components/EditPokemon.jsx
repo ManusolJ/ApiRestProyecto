@@ -16,20 +16,20 @@ const EditPokemon = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        await axios.put('${endpoint}${id}', {
+        await axios.put(`${endpoint}${id}`, {
             nombre: nombre,
             tipo: tipo,
-            alutra: altura,
+            altura: altura,
             peso: peso,
-            habilidad: habilidad,
+            habilidad: habilidad
         })
         navigate('/')
     }
 
     useEffect( () =>{
 
-        const getPokemonId = async () => {
-            const response = await axios.get('${endpoint}${id}')
+        const getPokemonById = async () => {
+            const response = await axios.get(`${endpoint}${id}`)
             setNombre(response.data.nombre)
             setTipo(response.data.tipo)
             setAltura(response.data.altura)
@@ -38,7 +38,7 @@ const EditPokemon = () => {
         }
         getPokemonById()
         
-    }, [])
+    }, [id])
   return (
     <div>
         <h2>Edit pokemon</h2>

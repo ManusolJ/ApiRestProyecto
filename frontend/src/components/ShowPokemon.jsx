@@ -13,14 +13,14 @@ useEffect(() => {
 
 
 const getAllPokemon = async () => {
-    const response = await axios.get('${endpoint}/pokemon')
+    const response = await axios.get(`${endpoint}/pokemon`)
     setPokemon(response.data) /* Revisar si es Pokemon con mayusc */
 }
 
 
 const deletePokemon = async (id) => {
 
-    await axios.delete('${endpoint}/pokemon/${id}')
+    await axios.delete(`${endpoint}/pokemon/${id}`)
     getAllPokemon()
 
 }
