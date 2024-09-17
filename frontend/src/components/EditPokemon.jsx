@@ -92,7 +92,7 @@ const EditPokemon = () => {
                     />
                 </div>
 
-                <button type='submit' className='btn btn-success'>Update</button>
+                <button type='submit' className='btn btn-success'>Actualizar</button>
             </form>
         </div>
     );
